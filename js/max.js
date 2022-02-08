@@ -1,3 +1,5 @@
+import sleep from './utils.js';
+
 class Ball {
   ball = document.createElement('div')
   color = "white"
@@ -128,8 +130,8 @@ function getRandomColor() {
 const ballsArray = []
 
 for (let i = 0; i < 75; i++) {
-
-  ballsArray.push(new Ball(0, 0, getRandomColor(), 0, 10))
+  await sleep(2000)
+  ballsArray.push(new Ball(0, 0, getRandomColor(), 1, 10))
   ballsArray[i].moveTheBall()
 }
 
