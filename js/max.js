@@ -70,13 +70,13 @@ class Ball {
         this.y = this.y - 1
     }
 
-    this.isOutOfBounderies()
+    this.isOutOfBoundaries()
 
     this.ball.style.left = this.x + 'px'
     this.ball.style.top = this.y + 'px'
   }
 
-  isOutOfBounderies(x, y) {
+  isOutOfBoundaries(x, y) {
     //! X coordinates:
     if (this.x + this.ballWidth >= this.bodyWidth && this.movingRight) {
       this.movingRight = false
@@ -130,7 +130,7 @@ function getRandomColor() {
 const ballsArray = []
 
 for (let i = 0; i < 75; i++) {
-  await sleep(2000)
+  await sleep(800)
   ballsArray.push(new Ball(0, 0, getRandomColor(), 1, 10))
   ballsArray[i].moveTheBall()
 }
