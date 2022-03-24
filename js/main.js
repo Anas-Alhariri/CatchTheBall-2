@@ -1,3 +1,4 @@
+// @ts-check
 const ball = document.getElementById('ball')
 
 let intervalID;
@@ -31,7 +32,7 @@ function roleTheBall() {
 
     //! Repeating the function every t interval in ms:
     intervalID = setInterval(() => {
-        //! Offset increament by 1:
+        //! Offset increment by 1:
         if (movingRight) {
             x += generateRandomNumber(5);
         } else {
@@ -48,7 +49,7 @@ function roleTheBall() {
         ball.style.left = x + 'px';
         ball.style.top = y + 'px';
 
-        //! updting the value of the windowWidth and windowHeight with the latest Width and Height:
+        //! updating the value of the windowWidth and windowHeight with the latest Width and Height:
 
         isOutOfBounds(x, y)
     }, t)

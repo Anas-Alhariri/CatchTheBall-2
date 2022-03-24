@@ -1,3 +1,4 @@
+// @ts-check
 import sleep from './utils.js';
 
 class Ball {
@@ -20,8 +21,8 @@ class Ball {
   intervalID = null
 
   constructor(x, y, color, stepSpeed, width) {
-    this.x = x && x !== 0 || this.randomStartingPosition()
-    this.y = y && y !== 0 || this.randomStartingPosition()
+    this.x = x && x !== 0 ? x : this.randomStartingPosition()
+    this.y = y && y !== 0 ? y : this.randomStartingPosition()
     this.color = color || "white"
     this.stepSpeed = stepSpeed != null && stepSpeed != 0 ? stepSpeed : this.generateRandomStepNumber(5)
     this.ballHeight = width || this.ball.clientWidth
@@ -76,7 +77,7 @@ class Ball {
     this.ball.style.top = this.y + 'px'
   }
 
-  isOutOfBoundaries(x, y) {
+  isOutOfBoundaries() {
     //! X coordinates:
     if (this.x + this.ballWidth >= this.bodyWidth && this.movingRight) {
       this.movingRight = false
@@ -129,11 +130,19 @@ function getRandomColor() {
 
 const ballsArray = []
 
-for (let i = 0; i < 75; i++) {
-  await sleep(800)
-  ballsArray.push(new Ball(0, 0, getRandomColor(), 1, 10))
-  ballsArray[i].moveTheBall()
+async function generateBalls(options = { amount: 75, delay: 800 }) {
+  for (let i = 0; i < options.amount; i++) {
+    await sleep(options.delay)
+    ballsArray.push(new Ball(0, 0, getRandomColor(), 1, 10))
+    ballsArray[i].moveTheBall()
+  }
 }
+
+
+// ! Without options:
+// generateBalls();
+// ! with options:
+generateBalls({ amount: 10, delay: 800 });
 
 // const ball1 = new Ball(0, 0, 'yellow', 3, 20)
 // const ball2 = new Ball(0, 0, 'lightgreen', 3, 20)
