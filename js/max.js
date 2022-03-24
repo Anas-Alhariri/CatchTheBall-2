@@ -116,6 +116,9 @@ class Ball {
   }
 }
 
+/**
+ * @param {number} maxLimit
+ */
 function randomNumber(maxLimit) {
   return Math.floor(Math.random() * maxLimit) + 70
 }
